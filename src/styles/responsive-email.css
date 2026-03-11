@@ -1,0 +1,153 @@
+/* Responsive Email Components CSS */
+
+/* Email List responsiveness */
+[class*="EmailList"] {
+  width: 100%;
+  height: 100%;
+}
+
+/* Email Thumbnail responsive layout */
+[class*="EmailThumbnail"],
+[class*="email-row"] {
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: hidden;
+}
+
+/* Sender name truncation on mobile */
+@media (max-width: 640px) {
+  [class*="sender-name"] {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  [class*="subject"] {
+    max-width: 80%;
+  }
+}
+
+/* Email Detail - Main content responsive */
+@media (max-width: 768px) {
+  [class*="EmailDetail"],
+  [class*="email-detail"] {
+    padding: 1rem;
+  }
+
+  .prose {
+    font-size: 16px;
+  }
+
+  /* Reduce padding for better mobile viewing */
+  [class*="email-header"],
+  [class*="email-body"] {
+    padding: 0.75rem 0;
+  }
+}
+
+/* Sidebar responsiveness */
+@media (max-width: 768px) {
+  [class*="Sidebar"] {
+    width: auto;
+    min-width: auto;
+  }
+
+  [class*="nav-label"] {
+    display: none;
+  }
+}
+
+/* ComposeModal responsiveness */
+@media (max-width: 640px) {
+  [class*="ComposeModal"],
+  .modal {
+    height: 70vh;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  [class*="modal-header"],
+  [class*="modal-footer"] {
+    padding: 0.5rem;
+  }
+}
+
+/* PanelGroup responsiveness */
+@media (max-width: 768px) {
+  .react-resizable-panels--group[data-direction="horizontal"] {
+    flex-direction: column;
+  }
+
+  [class*="Panel"] {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 300px;
+  }
+
+  /* Hide resize handles on mobile */
+  .react-resizable-panels__resize-handle {
+    display: none;
+  }
+}
+
+/* Toolbar responsiveness */
+@media (max-width: 640px) {
+  [class*="toolbar"],
+  [class*="email-toolbar"] {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  [class*="toolbar"] button {
+    padding: 0.5rem;
+  }
+}
+
+/* Container responsive padding */
+@media (max-width: 640px) {
+  .h-screen,
+  .min-h-screen {
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  .w-screen {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+/* Text responsiveness */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  p {
+    font-size: 0.875rem;
+  }
+}
+
+/* Avatar and user info responsiveness */
+@media (max-width: 640px) {
+  [class*="avatar"] {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  [class*="user-info"],
+  [class*="sender-info"] {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}

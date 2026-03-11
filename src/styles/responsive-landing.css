@@ -1,0 +1,168 @@
+/* Responsive Landing Page Overrides */
+
+/* Base container - make it responsive */
+[data-name="Email marketing landing page"] {
+  position: relative !important;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Remove absolute positioning and enable responsive layout */
+[data-name="Email marketing landing page"] > * {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Header/Navigation area */
+[data-name="Header"] {
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  top: auto !important;
+  left: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 1rem !important;
+}
+
+[data-name="logo"],
+[data-name="company"],
+[data-name="solution"],
+[data-name="left"],
+[data-name="subscribe input"],
+[data-name="button/go"] {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  display: inline-block !important;
+}
+
+/* Make input and button responsive */
+[data-name="subscribe input"],
+[data-name="button/go"] {
+  margin: 0.5rem !important;
+  width: auto !important;
+}
+
+/* Footer area */
+[data-name="Footer"] {
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  top: auto !important;
+  overflow: visible !important;
+  padding: 2rem 1rem !important;
+}
+
+/* Content sections */
+[data-name="About"],
+[data-name="Testimonials"],
+[data-name="Conversations"],
+[data-name="Stat"] {
+  position: static !important;
+  width: 100% !important;
+  height: auto !important;
+  top: auto !important;
+  padding: 2rem 1rem !important;
+  margin-bottom: 0 !important;
+}
+
+/* Make absolute content positions relative */
+[data-name="content"],
+[data-name="content 1"],
+[data-name="content 2"] {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  width: 100% !important;
+  padding: 1rem !important;
+}
+
+/* Text elements */
+p {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  width: auto !important;
+}
+
+/* Button elements */
+[data-name*="btn"],
+[data-name*="Button"] {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0.5rem !important;
+  display: inline-block !important;
+}
+
+/* SVG and decorative elements - maintain but don't position absolutely */
+svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Tablet breakpoint (768px) */
+@media (max-width: 768px) {
+  [data-name="Header"],
+  [data-name="Email marketing landing page"] {
+    padding: 0 1rem;
+  }
+
+  [data-name="logo"] {
+    width: 100%;
+    text-align: center;
+  }
+
+  [data-name="company"],
+  [data-name="solution"] {
+    display: none;
+  }
+
+  [data-name="subscribe input"],
+  [data-name="button/go"] {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  [data-name="content"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Mobile breakpoint (480px) */
+@media (max-width: 480px) {
+  [data-name="Email marketing landing page"] {
+    padding: 0 0.5rem;
+    font-size: 14px;
+  }
+
+  [data-name*="content"],
+  [data-name*="section"],
+  [data-name="Footer"] {
+    padding: 1rem 0.5rem;
+  }
+
+  [data-name="company"],
+  [data-name="solution"],
+  [data-name*="stats"] {
+    display: none;
+  }
+
+  [data-name="subscribe input"],
+  [data-name="button/go"],
+  [data-name*="btn"] {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  /* Hide decorative elements on very small screens */
+  svg[viewBox*="1440"],
+  [style*="transform"] {
+    display: none;
+  }
+}

@@ -1,9 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
-import { Sidebar } from './Sidebar';
-import { EmailList } from './EmailList';
-import { ComposeModal } from './ComposeModal';
-import { FolderType } from '../types';
+import { Sidebar } from '@/app/components/Sidebar';
+import { ComposeModal } from '@/app/components/ComposeModal';
 import { Youtube, ExternalLink } from 'lucide-react';
 import { 
   PanelResizeHandle, 
@@ -11,9 +10,11 @@ import {
   PanelGroup 
 } from 'react-resizable-panels';
 
-export function MailLayout() {
-  const { folder } = useParams();
-  const currentFolder = (folder as FolderType) || 'inbox';
+export default function EmailLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isComposeOpen, setIsComposeOpen] = useState(false);
 
   return (
@@ -48,19 +49,10 @@ export function MailLayout() {
           
           <PanelResizeHandle className="w-1 bg-gray-200 hover:bg-blue-400 transition-colors cursor-col-resize z-10" />
           
-          {/* Email List */}
-          <Panel defaultSize={34} minSize={25} maxSize={40} className="min-w-[300px]">
-            <EmailList folder={currentFolder} />
-          </Panel>
-          
-          <PanelResizeHandle className="w-1 bg-gray-200 hover:bg-blue-400 transition-colors cursor-col-resize z-10" />
-          
-          {/* Reading Pane */}
-          <Panel defaultSize={60} minSize={30}>
-            <div className="h-full bg-white">
-              <Outlet />
-            </div>
-          </Panel>
+          {/* Email List and Reading Pane */}
+          <div className="flex-1 overflow-hidden">
+            {children}
+          </div>
           
         </PanelGroup>
       </div>

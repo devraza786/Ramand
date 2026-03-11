@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { Email } from '../types';
+import { Email } from '@/app/types';
 import { toast } from 'sonner';
 
 interface EmailDetailProps {

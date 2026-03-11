@@ -1,19 +1,19 @@
 import svgPaths from "./svg-7t09zdds68";
-import imgRectangle from "figma:asset/29a6f016bcc819964de6cebc143c8515a300ad91.png";
-import imgImage311 from "figma:asset/db9fdc8b2fe1aa06c12726b8552e2ec4b3b67792.png";
-import imgEllipse388 from "figma:asset/30b9874d758ab2b3e3e07e216f5ea3c37ddacaf8.png";
-import imgEllipse386 from "figma:asset/3ed44b94f73cc8167f30edf62e0023a0dd1d588e.png";
-import imgEllipse2432 from "figma:asset/91b20aa2269061710e1fe90aa31f94e51927b83f.png";
-import imgEllipse2402 from "figma:asset/3dd0a933dce81812056309fc963677f7ba8389ea.png";
-import imgEllipse2400 from "figma:asset/ed8ac907ddeabd70a5f9dea6915e89735ee421b2.png";
-import imgImage2 from "figma:asset/40bdf9a08ee055e23a5476a6a9fc6bc60e8d49fd.png";
-import imgImage3 from "figma:asset/af16347719b9eeef13b71a1690db0346392ee196.png";
-import imgImage4 from "figma:asset/01a2f3d508d2af6dd344988988310608238e4208.png";
-import imgImage5 from "figma:asset/6bf2c559a2df78c89bc1c25e316a37f77fb91933.png";
-import imgImage6 from "figma:asset/99121882969764eda7f5de512c27d88ea44d817c.png";
-import imgImage7 from "figma:asset/1807ff0f92f521dc0a8966bcaa74ba50aa3446da.png";
-import imgOurspaceshipAfrica2K1 from "figma:asset/c09bbb0ea24561ad47bf8e5161b06c2e489db081.png";
-import imgImage8 from "figma:asset/2270882ef6bf42f10c4f9aeacbda33c2b0d55814.png";
+import imgRectangle from "../assets/29a6f016bcc819964de6cebc143c8515a300ad91.png";
+import imgImage311 from "../assets/db9fdc8b2fe1aa06c12726b8552e2ec4b3b67792.png";
+import imgEllipse388 from "../assets/30b9874d758ab2b3e3e07e216f5ea3c37ddacaf8.png";
+import imgEllipse386 from "../assets/3ed44b94f73cc8167f30edf62e0023a0dd1d588e.png";
+import imgEllipse2432 from "../assets/91b20aa2269061710e1fe90aa31f94e51927b83f.png";
+import imgEllipse2402 from "../assets/3dd0a933dce81812056309fc963677f7ba8389ea.png";
+import imgEllipse2400 from "../assets/ed8ac907ddeabd70a5f9dea6915e89735ee421b2.png";
+import imgImage2 from "../assets/40bdf9a08ee055e23a5476a6a9fc6bc60e8d49fd.png";
+import imgImage3 from "../assets/af16347719b9eeef13b71a1690db0346392ee196.png";
+import imgImage4 from "../assets/01a2f3d508d2af6dd344988988310608238e4208.png";
+import imgImage5 from "../assets/6bf2c559a2df78c89bc1c25e316a37f77fb91933.png";
+import imgImage6 from "../assets/99121882969764eda7f5de512c27d88ea44d817c.png";
+import imgImage7 from "../assets/1807ff0f92f521dc0a8966bcaa74ba50aa3446da.png";
+import imgOurspaceshipAfrica2K1 from "../assets/c09bbb0ea24561ad47bf8e5161b06c2e489db081.png";
+import imgImage8 from "../assets/2270882ef6bf42f10c4f9aeacbda33c2b0d55814.png";
 import { imgImage1 } from "./svg-tjy6o";
 
 function Company() {

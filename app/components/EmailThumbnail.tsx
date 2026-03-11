@@ -2,7 +2,7 @@ import React from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { Email } from '../types';
+import { Email } from '@/app/types';
 
 interface EmailThumbnailProps {
   email: Email;

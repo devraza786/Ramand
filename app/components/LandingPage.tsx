@@ -8,12 +8,12 @@ export function LandingPage() {
   // Handle clicks on the landing page to navigate to email client
   const handleClick = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
-    
+
     // Get the text content of the clicked element
     const clickedText = target.textContent?.toLowerCase() || '';
-    
+
     // Check if clicking on any interactive elements that should navigate to email app
-    const shouldNavigate = 
+    const shouldNavigate =
       clickedText.includes('features') ||
       clickedText.includes('best features') ||
       clickedText.includes('get started') ||
@@ -30,7 +30,7 @@ export function LandingPage() {
       target.closest('[data-name*="Button"]') !== null ||
       target.closest('[data-name*="features"]') !== null ||
       target.closest('[data-name="menu"]') !== null;
-    
+
     if (shouldNavigate) {
       e.preventDefault();
       e.stopPropagation();
@@ -41,8 +41,8 @@ export function LandingPage() {
   const handleMouseOver = (e: React.MouseEvent) => {
     const target = e.target as HTMLElement;
     const clickedText = target.textContent?.toLowerCase() || '';
-    
-    const isClickable = 
+
+    const isClickable =
       clickedText.includes('features') ||
       clickedText.includes('best features') ||
       clickedText.includes('get started') ||
@@ -58,18 +58,18 @@ export function LandingPage() {
       target.closest('[data-name*="Button"]') !== null ||
       target.closest('[data-name*="features"]') !== null ||
       target.closest('[data-name="menu"]') !== null;
-    
+
     if (isClickable) {
       target.style.cursor = 'pointer';
     }
   };
 
   return (
-    <div 
-      onClick={handleClick} 
+    <div
+      onClick={handleClick}
       onMouseOver={handleMouseOver}
-      className="w-full min-h-screen bg-white"
-      style={{ height: '7934px' }}
+      className="w-screen min-h-screen bg-white overflow-x-hidden"
+      style={{ maxWidth: '100vw' }}
     >
       <EmailMarketingLandingPage />
     </div>

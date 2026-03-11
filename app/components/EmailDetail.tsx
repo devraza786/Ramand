@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import { 
-  Reply, 
-  ReplyAll, 
-  Forward, 
-  Archive, 
-  Trash, 
-  MoreHorizontal, 
-  Star, 
-  Sparkles, 
-  Bot, 
+import {
+  Reply,
+  ReplyAll,
+  Forward,
+  Archive,
+  Trash,
+  MoreHorizontal,
+  Star,
+  Sparkles,
+  Bot,
   Send,
-  ChevronRight
+  ChevronRight,
+  X
 } from 'lucide-react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -27,6 +28,21 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
   const [customAction, setCustomAction] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [aiResponse, setAiResponse] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [showAiSidebar, setShowAiSidebar] = useState(!isMobile);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        setShowAiSidebar(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleActionClick = (action: string) => {
     setIsProcessing(true);
@@ -53,34 +69,39 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
   return (
     <div className="h-full flex flex-col bg-white">
       {/* Toolbar */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-white sticky top-0 z-10">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between px-4 md:px-6 py-4 border-b border-gray-100 bg-white sticky top-0 z-10 gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
             <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Reply">
                 <Reply size={18} />
             </button>
-            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Reply All">
+            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors hidden sm:block" title="Reply All">
                 <ReplyAll size={18} />
             </button>
-            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Forward">
+            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors hidden sm:block" title="Forward">
                 <Forward size={18} />
             </button>
         </div>
-        <div className="flex items-center gap-2">
-             <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Archive">
+        <div className="flex items-center gap-1 md:gap-2">
+             <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors hidden sm:block" title="Archive">
                 <Archive size={18} />
             </button>
             <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Delete">
                 <Trash size={18} />
             </button>
-             <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="More">
+             <button
+              onClick={() => isMobile && setShowAiSidebar(!showAiSidebar)}
+              className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors relative"
+              title={isMobile ? (showAiSidebar ? "Hide AI Sidebar" : "Show AI Sidebar") : "More"}
+            >
+                {isMobile && showAiSidebar && <span className="absolute top-1 right-1 w-2 h-2 bg-indigo-600 rounded-full"></span>}
                 <MoreHorizontal size={18} />
             </button>
         </div>
       </div>
 
-      <div className="flex-1 overflow-hidden flex flex-row">
+      <div className="flex-1 overflow-hidden flex flex-col md:flex-row">
         {/* Main Email Content */}
-        <div className="flex-1 overflow-y-auto p-8 scroll-smooth">
+        <div className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
           <div className="max-w-3xl mx-auto">
             {/* Header */}
             <div className="flex justify-between items-start mb-6">
@@ -136,7 +157,11 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
         </div>
 
         {/* AI Sidebar */}
-        <div className="w-80 border-l border-gray-200 bg-gray-50 overflow-y-auto flex flex-col shadow-[inset_4px_0_12px_-4px_rgba(0,0,0,0.05)]">
+        {(!isMobile || showAiSidebar) && (
+        <div className={clsx(
+          "border-t md:border-t-0 md:border-l border-gray-200 bg-gray-50 overflow-y-auto flex flex-col shadow-[inset_4px_0_12px_-4px_rgba(0,0,0,0.05)]",
+          isMobile ? "w-full max-h-64 md:max-h-none" : "w-80"
+        )}>
             <div className="p-6 sticky top-0 bg-gray-50/95 backdrop-blur z-10 border-b border-gray-200">
                 <div className="flex items-center gap-2 text-indigo-600 font-semibold mb-1">
                     <Sparkles size={18} />
@@ -223,6 +248,7 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
                 </div>
             </div>
         </div>
+        )}
       </div>
     </div>
   );

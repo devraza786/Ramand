@@ -52,71 +52,71 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
 
   return (
     <div className="h-full flex flex-col bg-white">
-      {/* Toolbar */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-white sticky top-0 z-10">
-        <div className="flex items-center gap-2">
-            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Reply">
-                <Reply size={18} />
+      {/* Toolbar - Responsive */}
+      <div className="flex items-center justify-between px-3 sm:px-6 py-3 sm:py-4 border-b border-gray-100 bg-white sticky top-0 z-10 gap-2 flex-wrap">
+        <div className="flex items-center gap-1 sm:gap-2">
+            <button className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Reply">
+                <Reply size={16} className="sm:w-[18px]" />
             </button>
-            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Reply All">
-                <ReplyAll size={18} />
+            <button className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Reply All">
+                <ReplyAll size={16} className="sm:w-[18px]" />
             </button>
-            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Forward">
-                <Forward size={18} />
+            <button className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Forward">
+                <Forward size={16} className="sm:w-[18px]" />
             </button>
         </div>
-        <div className="flex items-center gap-2">
-             <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Archive">
-                <Archive size={18} />
+        <div className="flex items-center gap-1 sm:gap-2">
+             <button className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Archive">
+                <Archive size={16} className="sm:w-[18px]" />
             </button>
-            <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Delete">
-                <Trash size={18} />
+            <button className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="Delete">
+                <Trash size={16} className="sm:w-[18px]" />
             </button>
-             <button className="p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="More">
-                <MoreHorizontal size={18} />
+             <button className="p-1.5 sm:p-2 hover:bg-gray-100 rounded-full text-gray-500 transition-colors" title="More">
+                <MoreHorizontal size={16} className="sm:w-[18px]" />
             </button>
         </div>
       </div>
 
-      <div className="flex-1 overflow-hidden flex flex-row">
+      <div className="flex-1 overflow-hidden flex flex-col lg:flex-row">
         {/* Main Email Content */}
-        <div className="flex-1 overflow-y-auto p-8 scroll-smooth">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-8 scroll-smooth">
           <div className="max-w-3xl mx-auto">
             {/* Header */}
-            <div className="flex justify-between items-start mb-6">
-                <h1 className="text-2xl font-bold text-gray-900 leading-tight">{email.subject}</h1>
-                <div className="flex items-center gap-2">
-                    <span className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-md">
+            <div className="flex flex-col sm:flex-row justify-between items-start mb-6 gap-4">
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight flex-1">{email.subject}</h1>
+                <div className="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto">
+                    <span className="text-xs sm:text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-md truncate">
                         {email.labels.join(', ')}
                     </span>
-                    <button className="text-gray-400 hover:text-yellow-400 transition-colors">
-                        <Star size={20} />
+                    <button className="text-gray-400 hover:text-yellow-400 transition-colors flex-shrink-0">
+                        <Star size={18} />
                     </button>
                 </div>
             </div>
 
             {/* Sender Info */}
-            <div className="flex items-center justify-between mb-8 pb-6 border-b border-gray-100">
-                <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white flex items-center justify-center text-xl font-bold shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8 pb-6 border-b border-gray-100 gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white flex items-center justify-center text-lg sm:text-xl font-bold shadow-sm flex-shrink-0">
                         {email.sender.name.charAt(0)}
                     </div>
-                    <div>
-                        <div className="font-semibold text-gray-900 text-lg">{email.sender.name}</div>
-                        <div className="text-gray-500 text-sm">{email.sender.email}</div>
+                    <div className="min-w-0">
+                        <div className="font-semibold text-gray-900 text-base sm:text-lg truncate">{email.sender.name}</div>
+                        <div className="text-gray-500 text-xs sm:text-sm truncate">{email.sender.email}</div>
                     </div>
                 </div>
-                <div className="text-gray-400 text-sm font-medium">
+                <div className="text-gray-400 text-xs sm:text-sm font-medium whitespace-nowrap">
                     {format(new Date(email.date), 'MMM d, yyyy, h:mm a')}
                 </div>
             </div>
 
             {/* Body */}
-            <div 
-                className="prose prose-blue max-w-none text-gray-800 leading-relaxed font-serif text-lg"
+            <div
+                className="prose prose-sm sm:prose-blue max-w-none text-gray-800 leading-relaxed font-serif text-base sm:text-lg"
                 dangerouslySetInnerHTML={{ __html: email.body }}
             />
-            
+
             {/* Attachments Placeholder */}
             {/* <div className="mt-8 pt-6 border-t border-gray-100">
                 <h4 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wide">Attachments</h4>
@@ -135,21 +135,21 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
           </div>
         </div>
 
-        {/* AI Sidebar */}
-        <div className="w-80 border-l border-gray-200 bg-gray-50 overflow-y-auto flex flex-col shadow-[inset_4px_0_12px_-4px_rgba(0,0,0,0.05)]">
-            <div className="p-6 sticky top-0 bg-gray-50/95 backdrop-blur z-10 border-b border-gray-200">
-                <div className="flex items-center gap-2 text-indigo-600 font-semibold mb-1">
-                    <Sparkles size={18} />
+        {/* AI Sidebar - Responsive width */}
+        <div className="w-full lg:w-80 border-t lg:border-t-0 lg:border-l border-gray-200 bg-gray-50 overflow-y-auto flex flex-col shadow-[inset_4px_0_12px_-4px_rgba(0,0,0,0.05)]">
+            <div className="p-4 sm:p-6 sticky top-0 bg-gray-50/95 backdrop-blur z-10 border-b border-gray-200">
+                <div className="flex items-center gap-2 text-indigo-600 font-semibold mb-1 text-sm sm:text-base">
+                    <Sparkles size={16} className="sm:w-[18px]" />
                     <span>AI Assistant</span>
                 </div>
                 <p className="text-xs text-gray-500">Powered by Agent v2.0</p>
             </div>
-            
-            <div className="p-6 space-y-8">
+
+            <div className="p-4 sm:p-6 space-y-6 sm:space-y-8">
                 {/* Summary Section */}
                 <div>
                     <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Summary</h3>
-                    <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-sm text-gray-700 leading-relaxed">
+                    <div className="bg-white p-3 sm:p-4 rounded-xl shadow-sm border border-gray-100 text-xs sm:text-sm text-gray-700 leading-relaxed">
                         {email.aiAnalysis.summary}
                     </div>
                 </div>
@@ -157,13 +157,13 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
                 {/* Sentiment Analysis */}
                 <div>
                      <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Sentiment</h3>
-                     <div className="flex items-center gap-3 bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
-                        <div className={clsx("w-3 h-3 rounded-full", {
+                     <div className="flex items-center gap-3 bg-white p-2.5 sm:p-3 rounded-xl border border-gray-100 shadow-sm">
+                        <div className={clsx("w-2.5 h-2.5 rounded-full flex-shrink-0", {
                              'bg-green-500': email.aiAnalysis.sentiment === 'positive',
                              'bg-gray-400': email.aiAnalysis.sentiment === 'neutral',
                              'bg-red-500': email.aiAnalysis.sentiment === 'negative',
                         })} />
-                        <span className="text-sm font-medium capitalize text-gray-700">{email.aiAnalysis.sentiment}</span>
+                        <span className="text-xs sm:text-sm font-medium capitalize text-gray-700">{email.aiAnalysis.sentiment}</span>
                      </div>
                 </div>
 
@@ -176,10 +176,10 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
                                 key={idx}
                                 onClick={() => handleActionClick(action)}
                                 disabled={isProcessing}
-                                className="w-full text-left p-3 bg-white hover:bg-indigo-50 border border-gray-200 hover:border-indigo-200 rounded-lg text-sm text-gray-700 transition-all flex items-center justify-between group shadow-sm"
+                                className="w-full text-left p-2 sm:p-3 bg-white hover:bg-indigo-50 border border-gray-200 hover:border-indigo-200 rounded-lg text-xs sm:text-sm text-gray-700 transition-all flex items-center justify-between group shadow-sm"
                             >
-                                <span>{action}</span>
-                                <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 text-indigo-400 transition-opacity" />
+                                <span className="truncate">{action}</span>
+                                <ChevronRight size={14} className="opacity-0 group-hover:opacity-100 text-indigo-400 transition-opacity flex-shrink-0 ml-2" />
                             </button>
                         ))}
                     </div>
@@ -194,14 +194,14 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
                                 type="text"
                                 value={customAction}
                                 onChange={(e) => setCustomAction(e.target.value)}
-                                placeholder="Ask AI to draft, summarize..."
-                                className="w-full text-sm p-3 pr-10 outline-none bg-transparent placeholder:text-gray-400"
+                                placeholder="Ask AI to draft..."
+                                className="w-full text-xs sm:text-sm p-2 sm:p-3 pr-10 outline-none bg-transparent placeholder:text-gray-400"
                                 disabled={isProcessing}
                             />
-                            <button 
-                                type="submit" 
+                            <button
+                                type="submit"
                                 disabled={!customAction.trim() || isProcessing}
-                                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                                className="absolute right-1.5 top-1/2 -translate-y-1/2 p-1 sm:p-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                             >
                                 {isProcessing ? (
                                     <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -212,7 +212,7 @@ export function EmailDetail({ email, onClose }: EmailDetailProps) {
                         </form>
                     </div>
                     {aiResponse && (
-                        <div className="mt-4 bg-indigo-50 border border-indigo-100 p-3 rounded-lg text-sm text-indigo-800 animate-in fade-in slide-in-from-top-2 duration-300">
+                        <div className="mt-4 bg-indigo-50 border border-indigo-100 p-2 sm:p-3 rounded-lg text-xs sm:text-sm text-indigo-800 animate-in fade-in slide-in-from-top-2 duration-300">
                              <div className="flex items-center gap-2 font-semibold mb-1">
                                 <Bot size={14} />
                                 <span>Agent</span>

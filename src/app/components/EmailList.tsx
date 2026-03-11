@@ -45,27 +45,27 @@ export function EmailList({ folder }: EmailListProps) {
 
   return (
     <div className="flex flex-col h-full bg-white border-r border-gray-200">
-      {/* Search Header */}
-      <div className="p-4 border-b border-gray-100 space-y-3 sticky top-0 bg-white z-10">
-        <h2 className="text-xl font-bold text-gray-900 capitalize px-1">{currentFolder}</h2>
+      {/* Search Header - Responsive */}
+      <div className="p-3 sm:p-4 border-b border-gray-100 space-y-2 sm:space-y-3 sticky top-0 bg-white z-10">
+        <h2 className="text-lg sm:text-xl font-bold text-gray-900 capitalize px-1">{currentFolder}</h2>
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
           <input
             type="text"
-            placeholder="Search emails..."
+            placeholder="Search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all placeholder:text-gray-400"
+            className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all placeholder:text-gray-400"
           />
         </div>
         <div className="flex items-center justify-between text-xs text-gray-500 px-1">
-            <span>{filteredEmails.length} messages</span>
-            <button 
+            <span className="truncate">{filteredEmails.length} messages</span>
+            <button
                 onClick={() => setFilter(filter === 'all' ? 'unread' : 'all')}
-                className="flex items-center gap-1 hover:text-gray-800 transition-colors"
+                className="flex items-center gap-1 hover:text-gray-800 transition-colors flex-shrink-0 ml-2"
             >
                 <Filter size={12} />
-                <span>{filter === 'all' ? 'All' : 'Unread'}</span>
+                <span className="hidden sm:inline">{filter === 'all' ? 'All' : 'Unread'}</span>
                 <ChevronDown size={12} />
             </button>
         </div>

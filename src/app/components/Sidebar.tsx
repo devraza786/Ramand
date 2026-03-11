@@ -115,8 +115,14 @@ export function Sidebar({ className, onComposeClick }: SidebarProps) {
         <button className="text-gray-400 hover:text-gray-600 transition-colors">
             <Settings size={20} />
         </button>
-        <div className="w-10 h-10 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-blue-400 transition-all">
-           <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150" alt="User" className="w-full h-full object-cover" />
+        <div className="w-10 h-10 rounded-full overflow-hidden cursor-pointer hover:ring-2 hover:ring-blue-400 transition-all flex-shrink-0">
+           <img
+             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=150&h=150"
+             alt="User"
+             className="w-full h-full object-cover"
+             loading="lazy"
+             decoding="async"
+           />
         </div>
       </div>
     </div>

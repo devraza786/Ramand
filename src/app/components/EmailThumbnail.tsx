@@ -39,8 +39,19 @@ export function EmailThumbnail({ email, isActive, onClick, className }: EmailThu
       <div className="flex justify-between items-start mb-1 gap-2">
         <div className="flex items-center gap-2 min-w-0 flex-1">
             {email.sender.avatar ? (
-                <img src={email.sender.avatar} alt={email.sender.name} className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover flex-shrink-0" />
-            ) : (
+                <img
+                  src={email.sender.avatar}
+                  alt={email.sender.name}
+                  className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-cover flex-shrink-0"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  }}
+                />
+            ) : null}
+            {!email.sender.avatar && (
                 <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs font-medium text-gray-600 flex-shrink-0">
                     {email.sender.name.charAt(0)}
                 </div>

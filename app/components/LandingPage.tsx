@@ -68,7 +68,8 @@ export function LandingPage() {
     <div
       onClick={handleClick}
       onMouseOver={handleMouseOver}
-      className="w-full min-h-screen bg-white overflow-x-hidden"
+      className="w-screen min-h-screen bg-white overflow-x-hidden"
+      style={{ maxWidth: '100vw' }}
     >
       <EmailMarketingLandingPage />
     </div>

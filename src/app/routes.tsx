@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter, Navigate } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { MailLayout } from './components/MailLayout';
 import { EmailDetailWrapper, EmailDetailPlaceholder } from './components/EmailDetailWrapper';
 import { LandingPage } from './components/LandingPage';

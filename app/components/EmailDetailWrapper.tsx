@@ -1,8 +1,7 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { mockEmails } from '../data/mockEmails';
+import { mockEmails } from '@/app/data/mockEmails';
 import { EmailDetail } from './EmailDetail';
-import { Email } from '../types';
+import { Email } from '@/app/types';
 
 export function EmailDetailWrapper() {
   const { emailId } = useParams();
